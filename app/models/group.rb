@@ -14,6 +14,7 @@
 class Group < ApplicationRecord
   validates :token, :address, presence: true
 
+<<<<<<< HEAD
   belongs_to :tenant,
   inverse_of: :groups,
   foreign_key: :tenant_id,
@@ -23,6 +24,12 @@ class Group < ApplicationRecord
   inverse_of: :groups,
   foreign_key: :landlord_id,
   class_name: :User
+=======
+  has_many :memberships
+
+  has_many :users,
+  through: :memberships
+>>>>>>> origin/master
 
   has_many :todos
 end

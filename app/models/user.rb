@@ -22,7 +22,14 @@ class User < ApplicationRecord
 	after_initialize :ensure_session_token
 	before_validation :ensure_session_token_uniqueness
 
+<<<<<<< HEAD
 	# has_many :posts
+=======
+	has_many :memberships
+
+  has_many :groups,
+  through: :memberships
+>>>>>>> origin/master
 
 	def password= password
 		self.password_digest = BCrypt::Password.create(password)
