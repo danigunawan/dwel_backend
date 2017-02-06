@@ -1,6 +1,7 @@
 class Api::MembershipsController < ApplicationController
   def create
-    membership = Membership.new(params[:group_id])
+    id = Group.find_by_token(params[:token]).id
+    membership = Membership.new(group_id: id)
     membership.user_id = current_user.id
     if membership.save
       render 'api/groups/index'

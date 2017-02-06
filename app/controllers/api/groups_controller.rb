@@ -23,19 +23,9 @@ class Api::GroupsController < ApplicationController
         WHERE users.id = #{User.first.id}")
       render :index
     else
-      render json: @group.errors.full_messages, status: 422
+      render json: group.errors.full_messages, status: 422
     end
   end
-
-  # def update
-  #   @group = Group.find_by_token(params[:token])
-  #   if current_user.landlord
-  #     @group.update(landlord_id: current_user.id)
-  #   else
-  #     @group.update(tenant_id: current_user.id)
-  #   end
-  #   render :show
-  # end
 
   def group_params
     params.require(:group).permit(:address, :token)
